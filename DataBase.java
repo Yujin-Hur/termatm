@@ -12,10 +12,10 @@ public class DataBase {
 	//(id, cash) map
 	private static Map<String, Long> account = new HashMap <String, Long>();
    
-	//ìƒì„±ì -> ìƒì„±ì´ ì•ˆë¼ì§€?
+	//»ı¼ºÀÚ -> »ı¼ºÀÌ ¾ÈµÅÁö?
 	public DataBase() {
-		// ì´ˆê¸° ATMì´ DataBaseë¥¼ ê°–ê³  ìˆë‹¤ëŠ” ê°€ì •í•˜ì— ì‹œì‘í•˜ê¸° ë•Œë¬¸ì—
-		// constructorì— ì´ˆê¸° ì •ë³´ë“¤ì„ ì–´ëŠì •ë„ ë„£ì–´ì¤ë‹ˆë‹¤. ->info (Hashmap) ì—ë‹¤ê°€
+		// ÃÊ±â ATMÀÌ DataBase¸¦ °®°í ÀÖ´Ù´Â °¡Á¤ÇÏ¿¡ ½ÃÀÛÇÏ±â ¶§¹®¿¡
+		// constructor¿¡ ÃÊ±â Á¤º¸µéÀ» ¾î´ÀÁ¤µµ ³Ö¾îÁİ´Ï´Ù. ->info (Hashmap) ¿¡´Ù°¡
 		info.put("00000-00000", 0000);
 		account.put("00000-00000", (long)10000000);
 		info.put("11111-11111", 0000);
@@ -24,20 +24,20 @@ public class DataBase {
 		account.put("22222-22222", (long)30000);
 	}  
    
-	//í•´ë‹¹ ê³„ì¢Œì˜ ë³´ìœ  ì”ì•¡ì„ ë¦¬í„´í•©ë‹ˆë‹¤.(getter)
+	//ÇØ´ç °èÁÂÀÇ º¸À¯ ÀÜ¾×À» ¸®ÅÏÇÕ´Ï´Ù.(getter)
 	public static long getBalance(String id) {
 		return account.get(id);
 	}
-	//í•´ì‹œë§µì— ì”ì•¡ ì •ë³´ë¥¼ ì—…ë°ì´íŠ¸í•©ë‹ˆë‹¤.(setter)
+	//ÇØ½Ã¸Ê¿¡ ÀÜ¾× Á¤º¸¸¦ ¾÷µ¥ÀÌÆ®ÇÕ´Ï´Ù.(setter)
 	public static void setBalance(String id, long cash) {
 		account.put(id, cash);
 	}
-	//ì¸ìë¡œ ë°›ì€ idì™€ passwordê°€ ë§µì— ì €ì¥ëœ passwordì™€ ì¼ì¹˜í•˜ëŠ”ì§€ ì•Œë ¤ì¤ë‹ˆë‹¤.
+	//ÀÎÀÚ·Î ¹ŞÀº id¿Í password°¡ ¸Ê¿¡ ÀúÀåµÈ password¿Í ÀÏÄ¡ÇÏ´ÂÁö ¾Ë·ÁÁİ´Ï´Ù.
 	public static boolean matchingPassword(String id, int password) {
 		if(password == info.get(id)) return true;
 		return false;
 	}
-	//ì¸ìë¡œ ë°›ì€ idê°€ dbì— ì¡´ì¬í•˜ëŠ”ì§€ ì•Œë ¤ì¤ë‹ˆë‹¤
+	//ÀÎÀÚ·Î ¹ŞÀº id°¡ db¿¡ Á¸ÀçÇÏ´ÂÁö ¾Ë·ÁÁİ´Ï´Ù
 	public static boolean checkingId(String id) {
 		if(info.containsKey(id)) {
 			return true;

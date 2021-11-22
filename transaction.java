@@ -34,5 +34,6 @@ public class transaction {
 		return log.size();
 		
 	}
+}
 
 

@@ -9,26 +9,26 @@ import javax.swing.JOptionPane;
 
 public class ATM {
    
-	public static int one, five; //ATMê¸° ì•ˆì— ë“¤ì–´ìˆëŠ” ë§Œ ì›ê¶Œ, ì˜¤ ë§Œì›ê¶Œ ì§€í ê°œìˆ˜
+	public static int one, five; //ATM±â ¾È¿¡ µé¾îÀÖ´Â ¸¸ ¿ø±Ç, ¿À ¸¸¿ø±Ç ÁöÆó °³¼ö
 	public static transaction tr = new transaction();
 	//constructor
 	public ATM() {
 		one = 10000; five = 10000;
 	}
    
-	//ì…ê¸ˆ
+	//ÀÔ±İ
 	static void Deposit(DataBase db, String id, long cash) {
 		db.setBalance(id, db.getBalance(id) + cash);
 		tr.add(id + " deposit: " + String.valueOf(cash)+"\n");
 	}
-	//ì¶œê¸ˆ
+	//Ãâ±İ
 	static void WithDraw(DataBase db, String id, long cash) {
 		db.setBalance(id, db.getBalance(id) - cash);
 		tr.add(id + " withdraw: " + String.valueOf(cash)+"\n");
 	}
-	//ì†¡ê¸ˆ
+	//¼Û±İ
 
-	//ì”ì•¡ í™•ì¸
+	//ÀÜ¾× È®ÀÎ
 	static long DisplayCash(DataBase db, String id) {
 		return db.getBalance(id);
 	}

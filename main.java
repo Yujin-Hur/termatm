@@ -12,10 +12,10 @@ import javax.swing.*;
 public class main {
    
     private static Scanner input = new Scanner(System.in);
-    private static int command; //ì‚¬ìš©ìì˜ ì…ë ¥ì„ ë°›ëŠ” ì»¤ë§¨ë“œ
-    private static ATM atm = new ATM(); //ATM ê°ì²´
-    private static DataBase DB = new DataBase(); //DataBase ê°ì²´
-    private static Interface screen; //Interface ê°ì²´
+    private static int command; //»ç¿ëÀÚÀÇ ÀÔ·ÂÀ» ¹Ş´Â Ä¿¸Çµå
+    private static ATM atm = new ATM(); //ATM °´Ã¼
+    private static DataBase DB = new DataBase(); //DataBase °´Ã¼
+    private static Interface screen; //Interface °´Ã¼
     private static String id;
     private static int password;
    
@@ -27,7 +27,7 @@ public class main {
       
     }
    
-    // GUIë¡œ ë°”ê¿ˆ
+    // GUI·Î ¹Ù²Ş
     private static void serviceOn() {
     	String tmp_id = screen.Input_id(0);
     	while(!Checkid(tmp_id)) {
@@ -43,7 +43,7 @@ public class main {
     private static void serviceOff() {
     	screen.ShowDown();
     }
-    //ì…ë ¥í•œ idê°€ í˜•ì‹ì— ë§ëŠ”ì§€ í™•ì¸
+    //ÀÔ·ÂÇÑ id°¡ Çü½Ä¿¡ ¸Â´ÂÁö È®ÀÎ
     private static boolean Checkid(String id) {
     	if(id.length() != 11) return false;
     	for(int i=0; i<id.length(); i++) {
@@ -58,7 +58,7 @@ public class main {
     	if(DB.checkingId(id)) return true;
     	else return false;
     }
-    //ì…ë ¥í•œ passwordê°€ í˜•ì‹ì— ë§ëŠ”ì§€ í™•ì¸
+    //ÀÔ·ÂÇÑ password°¡ Çü½Ä¿¡ ¸Â´ÂÁö È®ÀÎ
     private static boolean Checkpass(String id, int password) {
     	if(!DB.matchingPassword(id, password)) return false;
     	return true;
