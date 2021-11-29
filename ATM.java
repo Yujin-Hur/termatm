@@ -1,42 +1,56 @@
 package atmnew;
 
-
-
 import java.util.*;
 import javax.swing.JOptionPane;
 
-
-
 public class ATM {
-   
-	public static int one, five; //ATMê¸° ì•ˆì— ë“¤ì–´ìˆëŠ” ë§Œ ì›ê¶Œ, ì˜¤ ë§Œì›ê¶Œ ì§€í ê°œìˆ˜
-	public static transaction tr = new transaction();
-	//constructor
+
+	private static int one, five; // ATM±â ¾È¿¡ µé¾îÀÖ´Â ¸¸ ¿ø±Ç, ¿À ¸¸¿ø±Ç ÁöÆó °³¼ö
+	private static transaction tr = new transaction();
+
+	// constructor
 	public ATM() {
-		one = 10000; five = 10000;
+		one = 10000;
+		five = 10000;
 	}
-   
-	//ì…ê¸ˆ
+
+	static int getOne() {
+		return one;
+	}
+
+	static int getFive() {
+		return five;
+	}
+
+	static void put(int putOne, int putFive) {
+		one += putOne;
+		five += putFive;
+	}
+
+	// ÀÔ±İ
 	static void Deposit(DataBase db, String id, long cash) {
 		db.setBalance(id, db.getBalance(id) + cash);
-		tr.add(id + " deposit: " + String.valueOf(cash)+"\n");
+		tr.add(id + " deposit: " + String.valueOf(cash) + "\n");
 	}
-	//ì¶œê¸ˆ
+
+	// Ãâ±İ
 	static void WithDraw(DataBase db, String id, long cash) {
 		db.setBalance(id, db.getBalance(id) - cash);
-		tr.add(id + " withdraw: " + String.valueOf(cash)+"\n");
+		tr.add(id + " withdraw: " + String.valueOf(cash) + "\n");
 	}
-	//ì†¡ê¸ˆ
 
-	//ì”ì•¡ í™•ì¸
+	// ÀÜ¾× È®ÀÎ
 	static long DisplayCash(DataBase db, String id) {
 		return db.getBalance(id);
 	}
-	
-	static String LogPrint(int idx){
-		return tr.get(idx);
-		//System.out.printf(tr.get(idx));
 
+	// transaction history È®ÀÎ
+	static void LogPrint() {
+		ArrayList<String> tmp = new ArrayList<>();
+		for (int i = 0; i < ATM.tr.size(); i++) {
+			tmp.add(tr.get(i));
+		}
+		JOptionPane.showMessageDialog(null, tmp);
 	}
-   
-	}
+
+}
